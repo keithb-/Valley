@@ -61,9 +61,18 @@ namespace Valley.Controllers
         }
 
         [HttpGet]
-        public IResource Get()
+        public HttpResponseMessage Get()
         {
-            return _resourceManager.Find(Request.RequestUri);
+            if (_resourceManager.Contains(Request.RequestUri))
+            {
+                var resource = _resourceManager.Find(Request.RequestUri);
+                var response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new ByteArrayContent(resource.Content) };
+                response.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(resource.ContentType);
+                response.Content.Headers.ContentLength = resource.ContentLength;
+                return response;
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
 
         [HttpPost]
@@ -82,6 +91,14 @@ namespace Valley.Controllers
             value.ContentType = content.ContentType;
             value.Content = content.Body;
             _resourceManager.Save(value);
+
+            var path = Request.RequestUri.ToString();
+            var lastIndex = path.LastIndexOf('/');
+            path = path.Substring(0, lastIndex);
+            var collection = _resourceManager.Find(new Uri(path)) as ICollection;
+            collection.Resources.Add(value);
+            _resourceManager.Save(collection);
+            
             var response = Request.CreateResponse(HttpStatusCode.SeeOther);
             response.Headers.Location = value.Mappings.First();
             return response;

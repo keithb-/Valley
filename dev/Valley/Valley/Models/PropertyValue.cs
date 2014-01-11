@@ -9,9 +9,6 @@ namespace Valley.Models
         public bool IsDirty { get; set; }
 
         [DataMember]
-        public string Name { get; set; }
-
-        [DataMember]
         public IProperty Property { get; set; }
 
         [DataMember]

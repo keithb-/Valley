@@ -24,7 +24,7 @@ namespace Valley.Web
 
             Valley.Web.Bootstrapper.Initialize();
             Valley.ConfigExtension.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalConfiguration.Configuration.Filters);
+            Valley.Web.FilterConfig.RegisterGlobalFilters(GlobalConfiguration.Configuration.Filters);
         }
     }
 }

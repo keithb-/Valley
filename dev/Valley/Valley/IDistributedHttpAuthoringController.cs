@@ -30,14 +30,8 @@ namespace Valley
         [HttpHead]
         HttpResponseMessage Head();
 
-        //kbielaczyc.2013.08.06: if the url is a valid resource,
-        //then having an overload with an automatic binding
-        //doesn't make any sense.
-        //[HttpHead]
-        //HttpResponseMessage Head(string id);
-
         [HttpGet]
-        T Get();
+        HttpResponseMessage Get();
         
         [HttpPost]
         HttpResponseMessage Post(GenericContent content);

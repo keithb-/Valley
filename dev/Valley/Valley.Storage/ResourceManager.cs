@@ -68,7 +68,7 @@ namespace Valley.Storage
                     {
                         CreateDirectory(path.ToString());
                         _data.Add(path, input);
-                        return;
+                        continue;
                     }
                     _data[path] = input;
                 }

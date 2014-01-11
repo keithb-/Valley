@@ -72,7 +72,7 @@
     <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\CollectionLockToken.cs" />
     <Compile Include="Models\CollectionLockTokenDepth.cs" />
-    <Compile Include="Models\GenericFile.cs" />
+    <Compile Include="Models\GenericContent.cs" />
     <Compile Include="Models\ICollection.cs" />
     <Compile Include="Models\ICollectionLockToken.cs" />
     <Compile Include="Models\ILockToken.cs" />
@@ -89,7 +89,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnityExtension.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

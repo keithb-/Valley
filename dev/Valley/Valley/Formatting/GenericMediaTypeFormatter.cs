@@ -19,7 +19,7 @@ namespace Valley.Formatting
         public GenericMediaTypeFormatter()
         {
             //TODO: Load this list of supported file types from the configuration.
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/octet-stream"));
+            //SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/octet-stream"));
             SupportedMediaTypes.Add(new MediaTypeHeaderValue("multipart/form-data"));
             SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
@@ -59,11 +59,11 @@ namespace Valley.Formatting
 
             using (var Imgstream = await FileContent.ReadAsStreamAsync())
             {
-                return new GenericContent { ContentType = MediaType, Body = ReadFully(Imgstream) };
+                return new GenericContent { ContentType = MediaType, Body = ReadToEnd(Imgstream) };
             }
         }
 
-        private byte[] ReadFully(Stream input)
+        private byte[] ReadToEnd(Stream input)
         {
             var Buffer = new byte[16 * 1024];
             using (var Ms = new MemoryStream())

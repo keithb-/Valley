@@ -67,7 +67,7 @@ namespace Valley.Models
             set
             {
                 _content = value;
-                ContentLength = Encoding.Unicode.GetString(_content).Length;
+                ContentLength = _content.Length;
             }
         }
 

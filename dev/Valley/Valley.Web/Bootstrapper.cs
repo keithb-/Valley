@@ -21,8 +21,8 @@ namespace Valley.Web
             var container = new UnityContainer();
 
             //TODO: Load these values from configuration.
-            var baseUri = new Uri("http://localhost:20996/");
-            var lockBaseUri = new Uri("http://localhost:20996/system/lock/");
+            var baseUri = new Uri("http://localhost/");
+            var lockBaseUri = new Uri("http://localhost/system/lock/");
 
             container.RegisterType<Valley.IResourceManager, Valley.Storage.ResourceManager>(new ContainerControlledLifetimeManager(), new InjectionConstructor(baseUri));
             container.RegisterType<Valley.ILockManager, Valley.Storage.LockManager>(new ContainerControlledLifetimeManager(), new InjectionConstructor(lockBaseUri));
